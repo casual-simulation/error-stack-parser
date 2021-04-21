@@ -1,13 +1,13 @@
 {
-  "name": "error-stack-parser",
-  "description": "Extract meaning from JS Errors",
+  "name": "@casual-simulation/error-stack-parser",
+  "description": "Fork of error-stack-parser with some not-yet-released changes",
   "maintainers": [
     "Eric Wendelin <me@eriwen.com> (https://www.eriwen.com)",
     "Victor Homyakov <vkhomyackov@gmail.com> (https://github.com/victor-homyakov)",
     "Oliver Salzburg (https://github.com/oliversalzburg)",
     "Ben Gourley (https://github.com/bengourley)"
   ],
-  "version": "2.0.6",
+  "version": "2.0.7",
   "license": "MIT",
   "keywords": [
     "stacktrace",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/stacktracejs/error-stack-parser.git"
+    "url": "git://github.com/casual-simulation/error-stack-parser.git"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
