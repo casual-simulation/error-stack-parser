@@ -49,13 +49,13 @@
         },
 
         /**
-         * Given part of a raw stackframe matching 'eval ...', return a possibly nested StackFrame representing
+         * Given part of a raw StackFrame matching 'eval ...', return a possibly nested StackFrame representing
          * an evalOrigin.
          *
-         * @param {String} partialFrame matching an eval expression of a stackframe
+         * @param {String} partialFrame matching an eval expression of a StackFrame
          * @returns {StackFrame} eval origin frame
          */
-        parseEvalOrigin: function ErrorStackParser$$parseEvalOrigin(partialFrame) {
+        parseEvalOriginV8: function ErrorStackParser$$parseEvalOriginV8(partialFrame) {
             if (partialFrame == null || partialFrame.length < 7) {
                 return undefined;
             }
@@ -80,7 +80,7 @@
                 lineNumber: locationParts[1],
                 columnNumber: locationParts[2],
                 source: partialFrame,
-                evalOrigin: this.parseEvalOrigin(partialFrame.substring(partialFrame.indexOf('(eval ') + 1, partialFrame.lastIndexOf(')')))
+                evalOrigin: this.parseEvalOriginV8(partialFrame.substring(partialFrame.indexOf('(eval ') + 1, partialFrame.lastIndexOf(')')))
             });
         },
 
@@ -91,7 +91,7 @@
 
             return filtered.map(function(line) {
                 if (line.indexOf('(eval ') > -1) {
-                    var evalOrigin = this.parseEvalOrigin(line.substring(line.indexOf('(eval ') + 1, line.lastIndexOf(')')))
+                    var evalOrigin = this.parseEvalOriginV8(line.substring(line.indexOf('(eval ') + 1, line.lastIndexOf(')')))
                     line = line.replace(/eval code/g, 'eval').replace(/(\(eval at [^()]*)|(\),.*$)/g, '');
                 }
                 var sanitizedLine = line.replace(/^\s+/, '').replace(/\(eval code/g, '(');
